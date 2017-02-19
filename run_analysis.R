@@ -22,7 +22,6 @@ names(subject)<-"subject"
 
 #2. Extract only the measurments on the mean and standard devisation
 Z<-X
-names(Z)[grep("[Mm]ean",names(Z))]
 Zms<-Z[,grep("[Mm]ean|[Ss]td",names(Z))]
 
 #(add the column inherent to the activity)
@@ -39,6 +38,6 @@ Zms$activity<-sub("4",activity_labels[4,"V2"],Zms$activity)
 Zms$activity<-sub("5",activity_labels[5,"V2"],Zms$activity)
 Zms$activity<-sub("6",activity_labels[6,"V2"],Zms$activity)
 
-#5. Independent tidy data with the averaage of each variable for each activity
+#5. Independent tidy data with the average of each variable for each activity and for each subject
 ZmsMean<-aggregate(Zms[-87],list(factor(Zms$activity),factor(Zms$subject)),mean)
 
